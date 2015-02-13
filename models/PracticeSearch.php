@@ -79,7 +79,8 @@ class PracticeSearch extends Model
         $query = CorecompPractice::find();
 		$query->where("profile_ID=".$this->id);
 
-		$query->select(['ID'=>'ID', 'practicename'=>'practicename','expertise'=>'expertise','specifics'=>'specifics','funfactor'=>'funfactor', 'competence'=>'funfactor']);
+	//	$query->select(['ID'=>'ID', 'practicename'=>'practicename','expertise'=>'expertise','specifics'=>'specifics','funfactor'=>'funfactor', 'competence'=>'funfactor']);
+$query->select("`ID` AS `ID`, `practicename` AS `practicename`, `expertise` AS `expertise`, `specifics` AS `specifics`, `funfactor` AS `funfactor`, `funfactor`+specifics+expertise AS `competence`");
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
